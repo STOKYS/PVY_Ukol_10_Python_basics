@@ -10,7 +10,8 @@ K řešení prvního úkolu je možné doporučit importovat interní modul date
 Řešení dalších dvou úkolů můžete odvodit z příkladů v dokumentaci k externímu modulu dateutil - viz https://pypi.org/project/python-dateutil/
 """
 
-from datetime import *
+import datetime
+import dateutil
 
 print(f"{datetime.now()}\n")
 
