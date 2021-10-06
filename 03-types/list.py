@@ -1,68 +1,15 @@
-'''
-V jazyce Python můžeme používat několik tzv. složených datových typů, které slouží k uložení většího počtu hodnot.
-Nejuniverzálnější z nich je seznam - list.
-Seznam vznikne, zapíšeme-li výčet libovolných hodnot oddělených čárkou mezi hranaté závorky.
-Není nutné, aby všechny prvky seznamu byly stejného typu.
-Zdroje:
-https://www.programiz.com/python-programming/list
-https://www.youtube.com/watch?v=_uQrJ0TkZlc&list=PLDDhGQzLtPdbS987RIIT8WKwb-L_K2eqU&index=4&t=6950s (video)
-https://www.w3schools.com/python/python_lists.asp
-https://macek.sandbox.cz/texty/python-tutorial-cz/tut/node5.html
-'''
+import random
+import string
 
-'''
-Příklady různých seznamů v Pythonu:
-'''
-print('Příklady různých seznamů v Pythonu:\n-----------------------------------')
-
-# Seznam tvořený znaky
 letters = ['a', 'b', 'c', 'd', 'e']
-
-# Seznam tvořený různými čísly
 numbers = [5, 18.25, -4, 1.8e3, 0x23, 0b111000, 0o77]
-
-# Seznam tvořený různými datovými typy
 mixed_list = ['text', False, 2020, [letters, numbers], {'name': 'Ledecká', 'state': 'CZE', 'number': 100}]
-
-# Seznamy tvořící matici
 matrix = [[0, 0], [0, 1], [1, 0], [1, 1]]
-
-print(f'\tSeznam letters: {letters}\n\tSeznam numbers: {numbers}\n\tSeznam mixed_list: {mixed_list}\n\tSeznam matrix: {matrix}\n')
-print(f'\tDatový typ proměnné mixed_list je {type(mixed_list)}\n')
-
-print('Příklady vytváření seznamů v Pythonu:\n-------------------------------------')
-
-# Vytvoření seznamu z řetězce
 chars = list('Hello world')
-print(f'\tVytvoření seznamu z řetězce - chars: {chars}')
-
-# Vytvoření seznamu z rozmezí čísel
 marks = list(range(1,6))
-print(f'\tVytvoření seznamu z rozmezí čísel - hodnoty 1-5: {marks}')
 odds = list(range(1,10,2))
-print(f'\tVytvoření seznamu z rozmezí čísel - lichá čísla v rozsahu 1-10: {odds}\n')
 
 
-'''
-Výpisy hodnot ze seznamů
-
-'''
-print('Příklady výpisů hodnot ze seznamů\n---------------------------------')
-print(f'\tVypíše třetí znak ze seznamu letters: {letters[2]}')
-print(f'\tVypíše první tři čísla ze seznamu numbers: {numbers[:3]}')
-print(f'\tVypíše druhý a třetí znak ze seznamu letters: {letters[1:3]}')
-print(f'\tVypíše každý druhý prvek ze seznamu letters: {letters[::2]}')
-
-# ??? 1. cvičení ???
-# Doplňte podle zadání chybějící u následujících tří výpisů
-print('\n1. Cvičení\n***********************************************************************************************')
-print(f'\tVypíše poslední 2 prvky ze seznamu numbers: ???')
-print(f'\tVypíše každý sudý prvek ze seznamu letters: ???')
-print(f'\tVypíše všechny hodnoty z mixed_list kromě dvou posledních: ???')
-print(f'\tVypíše hodnotu prvku name ze slovníku umístěného v seznamu mixed_list: ???')
-print(f'\tVypíše hodnotu předposledního čísla z listu numbers umístěného v seznamu mixed_list: ???')
-print('***********************************************************************************************\n')
-# ??? Konec 1. cvičení ???
 
 '''
 Úpravy hodnot v seznamech
@@ -273,7 +220,22 @@ second = [3]
 values = [*first, 'ahoj', *second, *'Hello']
 print(f'\tSbalení seznamů do proměnné values: {values}\n')
 
+
+# ??? 1. cvičení ???
+
+# Doplňte podle zadání chybějící u následujících tří výpisů
+print('\n1. Cvičení\n***********************************************************************************************')
+print(f'\tVypíše poslední 2 prvky ze seznamu numbers: {numbers[-2:]}')
+print(f'\tVypíše každý sudý prvek ze seznamu letters: {letters[1::2]}')
+print(f'\tVypíše všechny hodnoty z mixed_list kromě dvou posledních: {mixed_list[:-2]}')
+print(f'\tVypíše hodnotu prvku name ze slovníku umístěného v seznamu mixed_list: {mixed_list[4].get("name")}')
+print(f'\tVypíše hodnotu předposledního čísla z listu numbers umístěného v seznamu mixed_list: {mixed_list[3][1][-2]}')
+print('***********************************************************************************************\n')
+# ??? Konec 1. cvičení ???
+
+
 # ??? 2. cvičení ???
+
 # a) Vygenerujte do proměnné hundreds seznam čísel v rozsahu 1 až 2000. V seznamu budou pouze čísla dělitelná 200 beze zbytku.
 # b) Vygenerujte do proměnné ascii seznam 50 náhodně zvolených znaků - velkých písmen anglické abecedy.
 # c) Vymažte ze seznamu hundreds 3 první a 3 poslední hodnoty.
@@ -282,13 +244,29 @@ print(f'\tSbalení seznamů do proměnné values: {values}\n')
 # aby vznikl seznam n-tic (list of tuples) v podobě (cislo, znak).
 # Snažte se vždy o co nejzhuštěnější kód - ideálně na 1 řádku (+ další řádek s kontrolním výpisem proměnné)
 # import knihovny pro generování náhodných čísel
-from random import randint
-
-print(f'\n*************************************\nCvičení 2\n*************************************')
 
 
+print('\n2. Cvičení\n***********************************************************************************************')
+import random
+import string
+
+hundreds = random.sample(range(200, 2000, 200), 9)
+print(hundreds)
+ascii = [(random.choice(string.ascii_uppercase)) for x in range(0, 50)]
+print(ascii)
+hundreds = hundreds[3:-3]
+print(hundreds)
+unique = []
+[unique.append(x) for x in ascii if x not in unique]
+print(unique)
+print(ascii)
+combine = tuple(zip(hundreds, ascii[:len(hundreds)]))
+print(combine)
+
+print('***********************************************************************************************\n')
 
 # ??? 3. cvičení ???
+
 # a) Přidejte do listu persons ještě n-tice (tuples) dalších 2 žen a 2 mužů.
 # b) Použijte seznam (list) persons a do proměnné women z něj pomocí lambda výrazu i comprehensions vyhledejte všechny ženy.
 # Seznam jmen žen poté vypište na samostatné řádky. Každý vypsaný řádek bude podtržen pomlčkami přesně podle délky jména.
@@ -297,4 +275,16 @@ print(f'\n*************************************\nCvičení 2\n******************
 # Kromě jména, věku a pohlaví v něm budou vypsána i čísla indexů (jako 1. sloupec). Oddělovačem bude středník.
 # Záznamy budou seřazeny podle věku (sestupně).
 
-print(f'\n*************************************\nCvičení 3\n*************************************')
+print('\n3. Cvičení\n***********************************************************************************************')
+persons.extend([("David", 17, "muž"), ("Lenka", 21, "žena"), ("Katerina", 45, "žena"), ("Vaclav", 45, "muž")])
+women = list(filter(lambda item: item[2] == "žena", persons))
+for i in women:
+    print(f"{i[0]}\n{len(i[0])*'-'}")
+ipeople = list(filter(lambda item: item[2] == "žena" and item[0].find("i") != -1, persons))
+ipeople.sort(key=lambda row: row[1], reverse=True)
+print('index;jmeno;vek;pohlavi;')
+[print(str(i) + ';' + ';'.join(str(x) for x in x), end=';\n') for i, x in enumerate(ipeople)]
+
+print('***********************************************************************************************')
+#Do jednoho radku
+
