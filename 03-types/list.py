@@ -279,10 +279,10 @@ persons.extend([("David", 17, "muž"), ("Lenka", 21, "žena"), ("Katerina", 45, 
 women = list(filter(lambda item: item[2] == "žena", persons))
 for i in women:
     print(f"{i[0]}\n{len(i[0])*'-'}")
-ipeople = list(filter(lambda item: item[2] == "žena" and item[0].find("i") != -1, persons))
+ipeople = list(filter(lambda item: item[0].lower().find("i") != -1, persons))
 ipeople.sort(key=lambda row: row[1], reverse=True)
 print('index;jmeno;vek;pohlavi;')
-[print(str(i) + ';' + ';'.join(str(x) for x in x), end=';\n') for i, x in enumerate(ipeople)]
+[print(str(i) + ';' + ';'.join(str(y) for y in x), end=';\n') for i, x in enumerate(ipeople)]
 
 print('***********************************************************************************************')
 #Do jednoho radku
