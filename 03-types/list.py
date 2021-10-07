@@ -1,5 +1,4 @@
-import random
-import string
+
 
 letters = ['a', 'b', 'c', 'd', 'e']
 numbers = [5, 18.25, -4, 1.8e3, 0x23, 0b111000, 0o77]
