@@ -249,17 +249,15 @@ print('\n2. Cvičení\n*********************************************************
 import random
 import string
 
-hundreds = random.sample(range(200, 2000, 200), 9)
+hundreds = [x for x in range(200, 2001, 200)]
 print(hundreds)
 ascii = [(random.choice(string.ascii_uppercase)) for x in range(0, 50)]
 print(ascii)
 hundreds = hundreds[3:-3]
 print(hundreds)
-unique = []
-[unique.append(x) for x in ascii if x not in unique]
+unique = [x for x in ascii if (ascii.count(x) == 1)]
 print(unique)
-print(ascii)
-combine = tuple(zip(hundreds, ascii[:len(hundreds)]))
+combine = zip(hundreds, ascii)
 print(combine)
 
 print('***********************************************************************************************\n')

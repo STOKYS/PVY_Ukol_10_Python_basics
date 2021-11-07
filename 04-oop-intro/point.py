@@ -16,14 +16,14 @@ class Point:
     def __init__(self, x, y):
         # self zastupuje samotný objekt
         # Atributy na úrovni objektu
-        self.x = x
-        self.y = y
+        self.__x = x
+        self.__y = y
         #? Vytvořte atribut objektu color a přiřaďte mu výchozí barvu podle výchozího atributu třídy
         self.color = Point.default_color
 
     # Magická metoda pro výpis textové informace o objektu
     def __str__(self):
-        return f'({self.x}, {self.y})'
+        return f'(x:{self.x}, y:{self.y})'
 
     # Magická metoda pro porovnávání objektů
     def __eq__(self, other):
@@ -205,3 +205,15 @@ for x in range(0, len(body) - 1):
     for y in range(x + 1, len(body)):
         min = [body[x] - body[y], (body[x], body[y])] if body[x] - body[y] < min[0] else min
 print(min[0], str(min[1][0]), str(min[1][1]))
+
+bod1x = Point(8,5)
+print(bod1x)
+bod2x = Point(5,5)
+print(bod2x)
+print(bod1x == bod2x)
+print(bod1x > bod2x)
+bod2x.x = 8
+print(bod2x)
+print(bod1x == bod2x)
+print(bod1x > bod2x)
+print(type(bod2x))
